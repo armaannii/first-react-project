@@ -18,7 +18,7 @@ const TechnologiesCard = ({technologies, stack, onAdd}: TechnologiesCardProps) =
 
         const isAdded = stack.some((item) => item.id === technology.id);
 
-        // if(isAdded)
+        
 
         return (
           
