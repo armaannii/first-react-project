@@ -1,4 +1,4 @@
-import { use } from "react";
+import { use, useState } from "react";
 import type { Technology } from "../types/TechnologiesType";
 import TechnologiesCard from "./TechnologiesCard";
 import Stack from "./Stack";
@@ -9,7 +9,24 @@ interface TechnologyProps {
 }
 
 const Technologies = ({ technologiesPromise }: TechnologyProps) => {
+
   const technologies = use(technologiesPromise);
+
+  const [stack, setStack] = useState<Technology[]>([]);
+
+  const handleAddToStack = (technology: Technology) => {
+    setStack((previousStack) => [...previousStack, technology]);
+  };
+
+  const handleRemoveFromStack = (id: string) => {
+    setStack((previousStack) =>
+      previousStack.filter((technology) => technology.id !== id)
+    );
+  };
+
+  const handleRemoveAll = () => {
+    setStack([]);
+  };
 
   return (
     <div className="container mx-auto ">
@@ -27,11 +44,17 @@ const Technologies = ({ technologiesPromise }: TechnologyProps) => {
       <div className="grid grid-cols-12 my-10">
         <div className="col-span-9">
             <div className="grid grid-cols-3 gap-y-10">
-                <TechnologiesCard technologies={technologies} />
+                <TechnologiesCard 
+                  technologies={technologies}
+                  stack={stack}
+                  onAdd={handleAddToStack} />
             </div>
         </div>
         <div className="col-span-3">
-            <Stack></Stack>
+            <Stack
+            stack={stack}
+            onRemove={handleRemoveFromStack}
+            onRemoveAll={handleRemoveAll}></Stack>
         </div>
       </div>
     </div>

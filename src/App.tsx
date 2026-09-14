@@ -12,6 +12,7 @@ const technologiesPromise = async(): Promise<Technology[]> =>{
 }
 
 function App() {
+    
 
   return (
     <>

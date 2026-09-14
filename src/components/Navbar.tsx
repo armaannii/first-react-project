@@ -4,16 +4,16 @@ const Navbar = () => {
     return (
         <nav className="flex justify-between container mx-auto p-4">
             <img src={logo} alt="" className='object-contain '/>
-            <ul className=" flex gap-5 items-center text-[#475569] hover:text-[#DB2777] ">
-                <li><a href="">Home</a></li>
-                <li><a href="">Technologies</a></li>
-                <li><a href="">Projects</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
+            <ul className=" flex gap-5 items-center text-[#475569] font-medium text-sm">
+                <li><a href="" className='hover:text-[#DB2777]'>Home</a></li>
+                <li><a href="" className='hover:text-[#DB2777]'>Technologies</a></li>
+                <li><a href="" className='hover:text-[#DB2777]'>Projects</a></li>
+                <li><a href="" className='hover:text-[#DB2777]'>About</a></li>
+                <li><a href="" className='hover:text-[#DB2777]'>Contact</a></li>
             </ul>
-            <div className='flex gap-8 text-[#475569] btn border-none bg-transparent'>
-                <button className='cursor-pointer  hover:!text-red-700'>Sign In</button>
-                <button className='cursor-pointer'>Sign Up</button>
+            <div>
+                <button className="btn btn-ghost rounded-4xl hover:text-white hover:bg-[#D91B7E] hover:rounded-4xl">Sign In</button>
+                <button className="btn btn-ghost rounded-4xl hover:text-white hover:bg-[#D91B7E] hover:rounded-4xl">Sign Up</button>
             </div>
       </nav>
     );

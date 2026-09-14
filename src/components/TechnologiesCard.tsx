@@ -1,15 +1,26 @@
-import { useState } from "react";
+// import { useState } from "react";
 import type { Technology } from "../types/TechnologiesType";
 
-const TechnologiesCard = ({technologies}: {technologies: Technology[]}) => {
+interface TechnologiesCardProps {
+  technologies: Technology[];
+  stack: Technology[];
+  onAdd: (technology: Technology) => void;
+}
+
+
+const TechnologiesCard = ({technologies, stack, onAdd}: TechnologiesCardProps) => {
   
-    const [isSelected, setIsSelected] = useState(false);
+    // const [isAdded, setIsAdded] = useState(false);
   
     return (
     <>
       {technologies.map((technology: Technology) => {
+
+        const isAdded = stack.some((item) => item.id === technology.id);
+
         return (
-          <div className="w-[200px] rounded-xl  bg-white p-4 border border-slate-100 bg-white p-5 shadow-[0_2px_10px_rgba(15,23,42,0.04)]">
+          
+          <div className="mr-4 rounded-xl min-h-[244px] bg-white p-4 border border-slate-100 bg-white shadow-[0_2px_10px_rgba(15,23,42,0.04)]">
             {/* Top */}
             <div className="flex items-start justify-between gap-3">
               <div className="flex h-9 w-9 items-center justify-center">
@@ -41,9 +52,12 @@ const TechnologiesCard = ({technologies}: {technologies: Technology[]}) => {
             </div>
 
             {/* Button */}
-            <button type="button" onClick={() => setIsSelected(true)} disabled={isSelected} 
-                className="mt-3 w-full rounded-md bg-[#0F0B20] py-2 text-[9px] text-white">
-              Add to Stack
+            <button
+                type="button" 
+                onClick={() => onAdd(technology)} 
+                disabled={isAdded} 
+                className="btn btn-primary shadow-md transition-all mt-3 w-full rounded-md bg-[#0F0B20] py-2 text-[9px] text-white">
+              {isAdded ? "Added to Stack" : "Add to Stack"}
             </button>
           </div>
         );
