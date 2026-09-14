@@ -18,6 +18,8 @@ const TechnologiesCard = ({technologies, stack, onAdd}: TechnologiesCardProps) =
 
         const isAdded = stack.some((item) => item.id === technology.id);
 
+        // if(isAdded)
+
         return (
           
           <div className="mr-4 rounded-xl min-h-[244px] bg-white p-4 border border-slate-100 bg-white shadow-[0_2px_10px_rgba(15,23,42,0.04)]">
@@ -57,7 +59,7 @@ const TechnologiesCard = ({technologies, stack, onAdd}: TechnologiesCardProps) =
                 onClick={() => onAdd(technology)} 
                 disabled={isAdded} 
                 className="btn btn-primary shadow-md transition-all mt-3 w-full rounded-md bg-[#0F0B20] py-2 text-[9px] text-white">
-              {isAdded ? "Added to Stack" : "Add to Stack"}
+              {isAdded ? "Already Added" : "Add to Stack"}
             </button>
           </div>
         );
