@@ -10,8 +10,6 @@ interface TechnologiesCardProps {
 
 const TechnologiesCard = ({technologies, stack, onAdd}: TechnologiesCardProps) => {
   
-    // const [isAdded, setIsAdded] = useState(false);
-  
     return (
     <>
       {technologies.map((technology: Technology) => {
